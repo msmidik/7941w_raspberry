@@ -47,47 +47,45 @@ It can read a variety of IC and ID card. Support Mifare1K, UID card, IC card, T5
 
 *Send:*
 
-   1) 0x10 read UID number
-   2) 0x11 write UID number (4 bytes), use default password ffffffffffff
-   3) 0x12 read specified sector
-   4) 0x13 write specified sector
-   5) 0x14 modify the password of group A or group B
-   6) 0x15 read ID number
-   7) 0x16 write T5577 number
-   8) 0x17 read all sector data (M1-1K card)
+   * 0x10 read UID number
+   * 0x11 write UID number (4 bytes), use default password ffffffffffff
+   * 0x12 read specified sector
+   * 0x13 write specified sector
+   * 0x14 modify the password of group A or group B
+   * 0x15 read ID number
+   * 0x16 write T5577 number
+   * 0x17 read all sector data (M1-1K card)
    
 *Return:*
 
-   1) 0x81 return operation succeeded
-   2) 0x80 return operation failed
+   * 0x81 return operation succeeded
+   * 0x80 return operation failed
 
 5. Data Length: means following data length; if it’s 0, then the following data will not occur.
 
 6. **Data: read and written data**
 
 *Sending Data:*
-
-   1) Read Specified Sector: the first byte of the data represents sector; the second byte means the certain block of the sector; the third byte means A or B group password (0x0A/0x0B);
+   * Read Specified Sector: the first byte of the data represents sector; the second byte means the certain block of the sector; the third byte means A or B group password (0x0A/0x0B);
     then it comes with password of 6 bytes.
-   2) Write Specified Sector: the first byte of the data represents sector; the second byte means the certain block of the sector; the third byte means A or B group password (0x0A/0x0B);
+   * Write Specified Sector: the first byte of the data represents sector; the second byte means the certain block of the sector; the third byte means A or B group password (0x0A/0x0B);
     then it comes with password of 6 bytes and block data of 16 bytes.
-   3) Modify Password: the first byte means the certain sector; the second byte means A or B group password (0x0A/0x0B); then it comes with old password of 6 byte and new password.
+   * Modify Password: the first byte means the certain sector; the second byte means A or B group password (0x0A/0x0B); then it comes with old password of 6 byte and new password.
    
 *Receiving Data:*
-
-   Read specified sector return data format, the first byte is sector; the second byte is the certain block of sector; then it comes with block data of 16 bytes.
+   * Read specified sector return data format, the first byte is sector; the second byte is the certain block of sector; then it comes with block data of 16 bytes.
 
 7. XOR check: result of other bytes check except protocol header.
 
 **Example:**
 
-AB BA 00 10 00 10
-AB BA 00 11 04 6D E9 5C 17 DA
-AB BA 00 12 09 00 01 0A FF FF FF FF FF FF 10
-AB BA 00 13 19 00 01 0A FF FF FF FF FF FF 00 01 02 03 04 05 06 07 08 09 01 02 03 04 05 06 07
-AB BA 00 14 0E 00 0A FF FF FF FF FF FF 01 02 03 04 05 06 17
-AB BA 00 15 00 15
-AB BA 00 16 05 2E 00 B6 A3 02 2A
+AB BA 00 10 00 10 \
+AB BA 00 11 04 6D E9 5C 17 DA \
+AB BA 00 12 09 00 01 0A FF FF FF FF FF FF 10 \
+AB BA 00 13 19 00 01 0A FF FF FF FF FF FF 00 01 02 03 04 05 06 07 08 09 01 02 03 04 05 06 07 \
+AB BA 00 14 0E 00 0A FF FF FF FF FF FF 01 02 03 04 05 06 17 \
+AB BA 00 15 00 15 \
+AB BA 00 16 05 2E 00 B6 A3 02 2A \
 AB BA 17 07 0A FF FF FF FF FF FF 1A
 
 **Applications:**
