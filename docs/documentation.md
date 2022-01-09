@@ -23,12 +23,12 @@ It can read a variety of IC and ID card. Support Mifare1K, UID card, IC card, T5
 
 ## Protocol Introduction: (UART serial port communication protocol is shown as below)
 **Sending Protocol:**
-Protocol Header| Address | Command | Data Length | Data       | XOR Check
-AB BA          | 1 Byte	 | 1 Byte  | 1 Byte      | 1-255 Byte | 1 Byte
+| Protocol Header| Address | Command | Data Length | Data       | XOR Check |
+| AB BA          | 1 Byte	 | 1 Byte  | 1 Byte      | 1-255 Byte | 1 Byte  |
 
 **Receiving Protocol:**
-Protocol Header | Address | Command | Data Length | Data       | XOR Check
-CD DC           | 1 Byte  | 1 Byte  | 1 Byte      | 1-255 Byte | 1 Byte
+| Protocol Header | Address | Command | Data Length | Data       | XOR Check |
+| CD DC           | 1 Byte  | 1 Byte  | 1 Byte      | 1-255 Byte | 1 Byte    |
 
 1. Protocol Header: send (0xAB 0xBA)
 2. Return: (0xCD 0xDC)
@@ -78,4 +78,4 @@ AB BA 17 07 0A FF FF FF FF FF FF 1A
 3. Replicator
 
 **Module Size:**
-![module](https://github.com/smidik/rfid-7941w/blob/main/docs/module.jpg?raw=true)
+![module](module.jpg?raw=true)
