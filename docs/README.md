@@ -1,6 +1,8 @@
 # 7941W RFID reader/writer for Raspberry Pi
 
-Simle Python tool for cheap RFID reader and writer (Gwiot 7941W) on Raspberry Pi. See [7941W documentation](documentation.md)
+Simle Python tool for cheap RFID reader and writer (Gwiot 7941W) on Raspberry Pi. 
+
+See [7941W documentation](documentation.md)
 
 # Connection
 * via UART, module's RX goes to Raspberry's TX pin (GPIO 14) and module's TX goes to Raspberry's RX pin (GPIO 15)
